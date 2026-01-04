@@ -9,31 +9,16 @@ public class Solution {
             return -1;
         }
 
-        if(needle.Length == 1){
-            oneWordNeedle = true;
-        }
-
-        for(int i = 0; i < size;i++){
-
-            if(haystack[i] == needle[0]){
-                if(oneWordNeedle){
-                    return i;
-                }
-                flag = true;
-                for(int j = 1; j < needle.Length; j++){
-                    if(i+j < size){
-                      
+        for(int i = 0; i <= size - needle.Length ;++i){
+                for(int j = 0; j < needle.Length; j++){
                         if(haystack[i+j] != needle[j]){
-                            flag = false;
                             break;
                         }
-                        if(j == needle.Length - 1 && flag) return i;
-                    }
+                        if(j == needle.Length - 1) return i;
+                    
                 }
             }
-        }
-
-        return result;
-
+        
+        return -1;
     }
 }
