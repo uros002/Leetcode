@@ -13,19 +13,17 @@ public class Solution {
     public ListNode DetectCycle(ListNode head) {
         
         var dict = new Dictionary<ListNode,int>();
+        var hash = new HashSet<ListNode>();
         if(head == null){
             return null;
         }
         ListNode curr = head;
 
         while(curr != null && curr.next != null){
-            if(dict.ContainsKey(curr)){
-                dict[curr]++;
-                if(dict[curr] >= 2){
-                    return curr;
-                }
+            if(hash.Contains(curr)){
+                return curr;
             }else{
-                dict.Add(curr,1);
+                hash.Add(curr);
             }
 
             curr = curr.next;
